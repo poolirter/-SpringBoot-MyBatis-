@@ -300,7 +300,7 @@
                         tr = tr.replace(/#{name}/g, list[i].name)
                         tr = tr.replace("#{address}", list[i].address)
                         tr = tr.replace("#{phone}", list[i].phone)
-                        tr = tr.replace("#{aid}", list[i].aid)
+                        tr = tr.replace(/#{aid}/g, list[i].aid)
 
                         $("#address-list").append(tr)
                     }
@@ -326,6 +326,7 @@
             success: function (res) {
                 if (res.state == 200) {
                     //	重新加载收货地址列表
+                    window.location.reload()
                     showAddressList();
                 } else {
                     alert("设置默认收货地址失败")
