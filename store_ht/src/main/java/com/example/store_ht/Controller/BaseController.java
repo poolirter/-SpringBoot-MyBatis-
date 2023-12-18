@@ -12,7 +12,6 @@ public class BaseController {
     public static final int ok = 200;
 
     //    请求处理方法，这个方法的返回值就是需要传递给前端的数据
-//    自动将异常对象传递给此方法的参数列表上
     @ExceptionHandler({ServiceException.class, FileUploadException.class})  //用于统一处理抛出的异常
     public JsonResult<Void> handleException(Throwable e) {
         JsonResult<Void> result = new JsonResult<>(e);
@@ -63,11 +62,12 @@ public class BaseController {
         return result;
     }
 
-    /*
+    /**
+     *
      * 获取session对象中的uid
      * session session对象
      * return 当前登录的用户id值
-     * */
+     */
     protected final Integer getuidFromSession(HttpSession session) {
         return Integer.valueOf(session.getAttribute("uid").toString());
     }

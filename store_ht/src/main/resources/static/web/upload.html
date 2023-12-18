@@ -139,7 +139,8 @@
             </ul>
             <div class="panel-body">
                 <!--上传头像表单开始-->
-                <form id="form-change-avatar" class="form-horizontal" role="form">
+                <form id="form-change-avatar"
+                      class="form-horizontal" role="form">
                     <div class="form-group">
                         <label class="col-md-2 control-label">选择头像:</label>
                         <div class="col-md-5">
@@ -248,15 +249,16 @@
 </footer>
 <script>
     $(document).ready(function () {
-        let avatar = $.cookie("avatar")
 
-        $("#img-avatar").attr("src", avatar)
+        console.log("cookie中的avatar=" + $.cookie("avatar"));
+        $("#img-avatar").attr("src", $.cookie("avatar"));
     })
 
     function updateAvatar() {
         $.ajax({
             url: "http:/users/updateAvatar",
-            type: "get",
+            type: "POST",
+            dataType: "JSON",
             data: new FormData($("#form-change-avatar")[0]),
             processData: false, //处理数据的形式，关闭处理数据
             contentType: false, //提交数据的形式，关闭默认提交数据的形式
@@ -267,7 +269,8 @@
                     //将服务器端返回的头像地址设置为img标签的src属性上
                     //attr(属性，属性值)，给某个属性设置某个值
                     $("#img-avatar").attr("src", data.data)
-                    $.cookie("avatar",data.data.avatar,{expires:7})
+                    console.log(data)
+                    $.cookie("avatar", data.data, {expires: 7})
                 } else {
                     alert("头像修改失败")
                 }

@@ -39,7 +39,6 @@ public class AddressController extends BaseController {
 //        iAddressService.updateDefaultByAid(aid,username,uid);
 //        return new JsonResult<>(ok);
 //    }
-    // RestFul风格的请求编写
     @RequestMapping("/{aid}/set_default")
     public JsonResult<Void> updateDefault(@PathVariable("aid") Integer aid, HttpSession session) {
         iAddressService.updateDefaultByAid(aid,

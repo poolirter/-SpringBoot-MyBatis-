@@ -29,11 +29,7 @@ public class UserController extends BaseController {
     @Autowired
     private UserServiceImpl userService;
 
-    /*
-     * 1.接收数据方式：请求处理方式的参数列表设置为pojo类型来接收前端数据
-     * spring boot会将前端的url地址中的参数名和pojo类的属性名进行比较，如果比较的两个名称相同
-     * 则将值注入到pojo类上面
-     * */
+
     @RequestMapping(value = "reg", method = RequestMethod.POST)
 //    @ResponseBody  //表示此方法的响应结果以json格式进行数据的响应给到前端
     public JsonResult<Void> reg(User user) {
@@ -92,16 +88,6 @@ public class UserController extends BaseController {
         AVATAR_TYPE.add("image/gif");
     }
 
-    /**
-     * MultipartFile接口是springMVC提供的一个接口，这个接口为我们包装了
-     * 获取文件类型的数据（任何类型的file都可以接收），SpringBoot它有整合了
-     * SpringMvc,只需要再处理请求的方法参数列表上声明一个参数类型为MultipartFile
-     * 的参数，然后springboot自动将传递给服务的文件数据赋值给这个参数
-     *
-     * @param session
-     * @param file
-     * @return
-     */
 
     @RequestMapping("updateAvatar")
     public JsonResult<String> updateAvatar(HttpSession session, MultipartFile file) {
@@ -152,21 +138,5 @@ public class UserController extends BaseController {
 
 
 
-//    public JsonResult<Void> reg(User user){
-////创建响应结果对象
-//        JsonResult<Void> result=new JsonResult<>();
-//        try {
-//            userService.reg(user);
-//            result.setState(200);
-//            result.setMessage("用户注册成功");
-//        }catch (UsernameDuplicatedException e){
-//            result.setState(4000);
-//            result.setMessage("用户名被占用");
-//        }catch (InsertException e){
-//            result.setState(5000);
-//            result.setMessage("注册时产生未知的异常");
-//        }
-//        return result;
-//    }
 
 }

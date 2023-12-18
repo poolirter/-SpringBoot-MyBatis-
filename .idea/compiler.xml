@@ -10,8 +10,5 @@
         <module name="store_ht" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="store_ht" target="7" />
-    </bytecodeTargetLevel>
   </component>
 </project>
